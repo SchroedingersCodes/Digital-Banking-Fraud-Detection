@@ -2,12 +2,16 @@ import streamlit as st
 import pandas as pd
 import joblib
 import numpy as np
+import os
 
 # Load the Random Forest model
 @st.cache_resource
 def load_model():
     # Ensure this filename matches exactly what you upload to GitHub
-    rf_model = joblib.load('random_forest_smote_model.pkl')
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(base_dir, 'random_forest_smote_model.pkl')
+    
+    rf_model = joblib.load(model_path)
     return rf_model
 
 try:
