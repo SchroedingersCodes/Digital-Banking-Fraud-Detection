@@ -21,7 +21,7 @@ except Exception as e:
     st.stop()
 
 st.set_page_config(page_title="Fraud Detection System", page_icon="🛡️")
-
+#slider
 st.sidebar.header("⚙️ Model Settings")
 threshold = st.sidebar.slider(
     "Fraud Risk Threshold", 
@@ -73,10 +73,10 @@ input_values = [[gender, age, state, city, acc_type, amount, trans_type, merchan
 input_data = pd.DataFrame(input_values, columns=features)
 
 if st.button("Predict Fraud", type="primary"):
-    prediction = rf.predict(input_data)[0]
     probability = rf.predict_proba(input_data)[0][1]
-
-    if prediction == 1:
+    
+    # Compare calculated probability to slider threshold
+    if probability >= threshold:
         st.error(f"🚨 ALERT: Potential Fraud Detected! (Probability: {probability:.2%})")
     else:
         st.success(f"✅ Transaction looks clean. (Probability of Fraud: {probability:.2%})")
