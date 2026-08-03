@@ -32,7 +32,7 @@ threshold = st.sidebar.slider(
     help="Transactions with a probability above this value will be flagged as fraud."
 )
 
-st.title("🛡️ Fraud Detection System (Random Forest)")
+st.title("🛡️ Fraud Detection System (FRAUD GUARD)")
 st.markdown("Enter transaction details below to predict the likelihood of fraud.")
 
 # Create input form layout
