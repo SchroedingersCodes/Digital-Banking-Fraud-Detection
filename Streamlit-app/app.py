@@ -21,6 +21,17 @@ except Exception as e:
     st.stop()
 
 st.set_page_config(page_title="Fraud Detection System", page_icon="🛡️")
+
+st.sidebar.header("⚙️ Model Settings")
+threshold = st.sidebar.slider(
+    "Fraud Risk Threshold", 
+    min_value=0.10, 
+    max_value=0.90, 
+    value=0.35,  # Default threshold set to 35%
+    step=0.05,
+    help="Transactions with a probability above this value will be flagged as fraud."
+)
+
 st.title("🛡️ Fraud Detection System (Random Forest)")
 st.markdown("Enter transaction details below to predict the likelihood of fraud.")
 
